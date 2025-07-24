@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import mascotThinking from "@/assets/mascot-thinking.png";
+import mascotStanding from "@/assets/mascot-standing.png";
 
 interface ExplanationResult {
   translation: string;
@@ -80,7 +80,7 @@ const TextExplainer = ({
     <Card className="w-full max-w-4xl mx-auto shadow-accent">
       <CardHeader className="text-center">
         <div className="flex items-center justify-center gap-3 mb-2">
-          <img src={mascotThinking} alt="Thinking Elephant" className="h-12 w-12" />
+          <img src={mascotStanding} alt="Thinking Elephant" className="h-12 w-12" />
           <CardTitle className="text-2xl font-bold">
             AI Text Explainer
           </CardTitle>
