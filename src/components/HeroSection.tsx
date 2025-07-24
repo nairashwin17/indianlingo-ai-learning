@@ -100,7 +100,7 @@ const HeroSection = () => {
                 <img 
                   src={mascotLaptop} 
                   alt="IndianLingo Mascot" 
-                  className="h-48 w-48 mx-auto animate-bounce duration-3000"
+                  className="h-48 w-48 mx-auto"
                 />
                 
                 <div className="text-primary-foreground">
