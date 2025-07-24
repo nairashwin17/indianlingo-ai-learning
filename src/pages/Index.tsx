@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 import { 
   BookOpen, 
   Mic, 
@@ -12,21 +11,15 @@ import {
   MessagesSquare,
   Zap,
   Globe,
-  Award
+  ChevronRight,
+  Play
 } from "lucide-react";
 
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import LanguageSelector from "@/components/LanguageSelector";
-import SpeechInput from "@/components/SpeechInput";
-import QuizArea from "@/components/QuizArea";
-import TextExplainer from "@/components/TextExplainer";
-import Flashcards from "@/components/Flashcards";
-import StorytellingPlayer from "@/components/StorytellingPlayer";
 import Footer from "@/components/Footer";
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState("demo");
 
   const features = [
     {
@@ -157,84 +150,98 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Interactive Demo Section */}
+      {/* Quick Start Section */}
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
-              <Award className="h-4 w-4 mr-2" />
-              Try It Yourself
+              <Play className="h-4 w-4 mr-2" />
+              Start Learning Today
             </Badge>
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Experience <span className="bg-gradient-secondary bg-clip-text text-transparent">Interactive Learning</span>
+              Ready to Begin Your <span className="bg-gradient-secondary bg-clip-text text-transparent">Journey</span>?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Get hands-on with our learning tools. Each component is designed to make language learning engaging and effective.
+              Choose how you want to start learning. Each path is designed to help you master Indian languages effectively.
             </p>
           </div>
 
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 mb-8">
-              <TabsTrigger value="demo">Demo</TabsTrigger>
-              <TabsTrigger value="speech">Speech</TabsTrigger>
-              <TabsTrigger value="quiz">Quiz</TabsTrigger>
-              <TabsTrigger value="explainer">Explainer</TabsTrigger>
-              <TabsTrigger value="flashcards">Flashcards</TabsTrigger>
-              <TabsTrigger value="stories">Stories</TabsTrigger>
-            </TabsList>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="hover:shadow-accent transition-all group cursor-pointer">
+              <CardHeader className="text-center">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+                  <BookOpen className="h-6 w-6 text-primary" />
+                </div>
+                <CardTitle className="text-lg">Start Learning</CardTitle>
+                <CardDescription>Begin with structured lessons</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <Link to="/learn">
+                  <Button className="w-full group-hover:scale-105 transition-transform">
+                    Start Now
+                    <ChevronRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
 
-            <TabsContent value="demo" className="space-y-8">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold mb-4">Start Your Learning Journey</h3>
-                <p className="text-muted-foreground mb-8">Choose your languages and begin exploring Indian culture through language.</p>
-              </div>
-              <LanguageSelector />
-            </TabsContent>
+            <Card className="hover:shadow-accent transition-all group cursor-pointer">
+              <CardHeader className="text-center">
+                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20 transition-colors">
+                  <Brain className="h-6 w-6 text-accent" />
+                </div>
+                <CardTitle className="text-lg">Take Quizzes</CardTitle>
+                <CardDescription>Test your knowledge</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <Link to="/quizzes">
+                  <Button variant="outline" className="w-full group-hover:scale-105 transition-transform">
+                    Start Quiz
+                    <ChevronRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
 
-            <TabsContent value="speech">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold mb-4">AI-Powered Pronunciation Practice</h3>
-                <p className="text-muted-foreground">Practice speaking and get instant feedback on your pronunciation.</p>
-              </div>
-              <SpeechInput />
-            </TabsContent>
+            <Card className="hover:shadow-accent transition-all group cursor-pointer">
+              <CardHeader className="text-center">
+                <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary/20 transition-colors">
+                  <Gamepad2 className="h-6 w-6 text-secondary" />
+                </div>
+                <CardTitle className="text-lg">Flashcards</CardTitle>
+                <CardDescription>Practice vocabulary</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <Link to="/flashcards">
+                  <Button variant="outline" className="w-full group-hover:scale-105 transition-transform">
+                    Practice
+                    <ChevronRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
 
-            <TabsContent value="quiz">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold mb-4">Interactive Learning Quizzes</h3>
-                <p className="text-muted-foreground">Test your knowledge with adaptive quizzes that help you learn effectively.</p>
-              </div>
-              <QuizArea />
-            </TabsContent>
-
-            <TabsContent value="explainer">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold mb-4">AI Text Analysis & Explanation</h3>
-                <p className="text-muted-foreground">Understand complex texts with detailed AI-powered explanations.</p>
-              </div>
-              <TextExplainer />
-            </TabsContent>
-
-            <TabsContent value="flashcards">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold mb-4">Interactive Flashcards</h3>
-                <p className="text-muted-foreground">Learn vocabulary through engaging, voice-enabled flashcards.</p>
-              </div>
-              <Flashcards />
-            </TabsContent>
-
-            <TabsContent value="stories">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold mb-4">Immersive Storytelling</h3>
-                <p className="text-muted-foreground">Learn through engaging stories with synchronized audio and text.</p>
-              </div>
-              <StorytellingPlayer />
-            </TabsContent>
-          </Tabs>
+            <Card className="hover:shadow-accent transition-all group cursor-pointer">
+              <CardHeader className="text-center">
+                <div className="w-12 h-12 rounded-lg bg-warning/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-warning/20 transition-colors">
+                  <MessagesSquare className="h-6 w-6 text-warning" />
+                </div>
+                <CardTitle className="text-lg">Read Stories</CardTitle>
+                <CardDescription>Learn through narratives</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <Link to="/stories">
+                  <Button variant="outline" className="w-full group-hover:scale-105 transition-transform">
+                    Read Now
+                    <ChevronRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
-      <Separator className="my-0" />
       <Footer />
     </div>
   );
